@@ -1,0 +1,347 @@
+VUE
+Crear un proyecto en Vue.js
+Primero, asegúrate de tener Node.js y npm (Node Package Manager) instalados en tu máquina.
+
+1. Instalar Vue CLI:
+
+La interfaz de línea de comandos de Vue (CLI) te permite crear y gestionar proyectos Vue fácilmente. Instálala con el siguiente comando:
+
+bash
+npm install -g @vue/cli
+
+2. Crear un nuevo proyecto Vue:
+
+Usa el siguiente comando para crear un nuevo proyecto:
+
+bash
+vue create my-vue-app (my-vue-app es el nombre de la carpeta que se creará que contendrá la información del frontend, el nombre se puede cambiar a uno mas comodo)
+
+Sigue las instrucciones en pantalla para seleccionar las configuraciones del proyecto.
+
+3. Navegar al directorio del proyecto y ejecutar el servidor de desarrollo:
+
+bash
+cd my-vue-app (cd, entra en la carpeta que contiene el frontend)
+npm run serve
+
+Ahora puedes abrir tu navegador y navegar a http://localhost:8080 para ver tu aplicación Vue en funcionamiento.
+
+
+REACT
+Crear un proyecto en React
+Al igual que con Vue, asegúrate de tener Node.js y npm instalados.
+
+1. Instalar Create React App:
+
+Create React App es una herramienta oficial para crear aplicaciones React sin necesidad de configuración. Instálala con el siguiente comando:
+
+bash
+npm install -g create-react-app
+
+2. Crear un nuevo proyecto React:
+
+Usa el siguiente comando para crear un nuevo proyecto:
+
+bash
+create-react-app my-react-app
+
+3. Navegar al directorio del proyecto y ejecutar el servidor de desarrollo:
+
+bash
+cd my-react-app
+npm start
+
+Ahora puedes abrir tu navegador y navegar a http://localhost:3000 para ver tu aplicación React en funcionamiento.
+
+------------------------------------------------------------------------------------------------------
+
+1. Estructura del Proyecto y Archivos Esenciales
+src/main.js: Punto de entrada de la aplicación.
+src/App.vue: Componente raíz.
+src/components: Carpeta donde se almacenan los componentes reutilizables.
+
+2. Componentes
+Creación de Componentes: Cómo crear y usar componentes en Vue.
+Propiedades (Props): Pasar datos a los componentes hijos.
+Eventos: Emitir eventos desde componentes hijos a componentes padres.
+
+3. Plantillas (Templates)
+Sintaxis de Plantillas: Uso de interpolaciones, directivas (v-if, v-for, v-bind, etc.).
+Enlace de Datos (Data Binding): Cómo enlazar datos de la instancia Vue al DOM.
+
+4. Gestión del Estado
+Datos (Data): Definir y usar datos en componentes.
+Métodos (Methods): Definir métodos para manejar eventos y lógica.
+Computed Properties: Propiedades derivadas que se actualizan automáticamente.
+
+5. Estilos y CSS
+Scoped CSS: Aplicar estilos específicos a componentes.
+CSS Pre-processors: Uso de preprocesadores como Sass para estilos avanzados.
+
+6. Enrutamiento (Vue Router)
+Instalación y Configuración: Añadir Vue Router al proyecto.
+Rutas Básicas: Definir y usar rutas para navegar entre componentes.
+Parámetros de Ruta: Pasar parámetros a través de las rutas.
+
+7. Manejo del Estado Global (Vuex)
+Instalación y Configuración: Añadir Vuex al proyecto.
+State, Mutations, Actions y Getters: Conceptos clave en Vuex.
+Módulos Vuex: Organizar el estado en módulos.
+
+8. Consumo de APIs
+Axios: Librería para hacer peticiones HTTP.
+Petición GET y POST: Ejemplos de cómo hacer peticiones a una API.
+
+9. Pruebas
+Pruebas Unitarias: Uso de Jest para pruebas unitarias.
+Pruebas End-to-End: Uso de Cypress para pruebas E2E.
+
+------------------------------------------------------------------------------------------------------
+* <template>: Esta sección define la estructura HTML de tu componente. Todo el contenido HTML del componente se coloca dentro de las etiquetas <template>.
+
+* <div id="app">: Este div actúa como un contenedor principal para tu aplicación. El atributo id="app" es útil para aplicar estilos globales o para identificar este contenedor en otras partes del código.
+
+* <router-view>: Este es un componente especial proporcionado por Vue Router. Actúa como un marcador de posición donde se renderizarán los componentes de las rutas definidas. Dependiendo de la ruta actual, el componente correspondiente se mostrará aquí.
+
+*<script>: Esta sección contiene la lógica del componente en JavaScript.
+export default {}: Este es el objeto de exportación del componente. Aquí defines las propiedades y métodos del componente.
+* name: 'App': Este es el nombre del componente. Nombrar componentes es una buena práctica, especialmente cuando se depura o se utilizan herramientas de desarrollo.
+
+* <style>: Esta sección contiene los estilos CSS para tu componente. Puedes definir estilos específicos para este componente aquí.
+* /* Estilos globales */: Este es un comentario y no tiene ningún efecto. Aquí es donde puedes añadir tus estilos CSS.
+
+
+------------------------------------------------------------------------------------------------------
+Función del Archivo App.vue
+El archivo App.vue actúa como el componente raíz de tu aplicación Vue. Es el punto de entrada principal donde se monta la aplicación. En este caso, su principal función es contener el router-view, que es donde se renderizan los componentes basados en la ruta actual.
+
+Cuando navegas a diferentes rutas en tu aplicación, Vue Router reemplaza dinámicamente el contenido dentro de <router-view> con el componente correspondiente a esa ruta. Por ejemplo, si la ruta es /, se renderiza el componente HomePage. Si la ruta es /blank, se renderiza el componente BlankWindow.
+
+
+------------------------------------------------------------------------------------------------------
+MAIN.JS
+routes: Define un array de objetos de rutas. Cada objeto de ruta mapea una URL específica a un componente.
+path: '/': Define la ruta raíz que mostrará el componente HomePage.
+path: '/blank': Define una ruta /blank que mostrará el componente BlankWindow.
+
+createRouter: Crea una nueva instancia de Vue Router.
+history: createWebHistory(): Configura el historial del navegador para la navegación (modo de historial HTML5).
+routes: Pasa la configuración de rutas definidas anteriormente.
+
+createApp(App): Crea una nueva instancia de la aplicación Vue usando el componente raíz App.
+.use(router): Añade el router a la aplicación para habilitar la navegación basada en rutas.
+.mount('#app'): Monta la aplicación en el elemento del DOM con el id app (<div id="app"></div> en index.html).
+
+En resumen, el archivo main.js es esencial para inicializar y configurar la aplicación Vue, así como para definir cómo se manejan las rutas y la navegación dentro de la aplicación. 
+
+------------------------------------------------------------------------------------------------------
+ESTILOS
+
+1. Estilos en App.vue
+Ventajas:
+
+Estilos Globales: Los estilos definidos en App.vue o en un archivo CSS global se aplican a toda la aplicación, lo que es útil para estilos comunes como tipografía, colores, etc.
+Consistencia: Asegura una apariencia consistente a lo largo de toda la aplicación.
+
+2. Estilos en el Componente Individual
+Ventajas:
+
+Encapsulamiento: Los estilos definidos dentro de un componente vue usando el atributo scoped están encapsulados y no afectarán a otros componentes.
+Mantenimiento: Facilita el mantenimiento de los estilos, ya que están localizados junto con el componente que los usa.
+Reutilización: Si tienes componentes reutilizables, puedes llevar sus estilos con ellos, asegurándote de que siempre se vean correctamente.
+
+
+Diferencias
+Encapsulamiento: Los estilos en componentes individuales (<style scoped>) están encapsulados y no afectan otros componentes. En cambio, los estilos en App.vue (sin scoped) son globales y afectan toda la aplicación.
+Mantenimiento: Los estilos de componentes individuales facilitan el mantenimiento, ya que los estilos están directamente asociados con el componente. Los estilos globales en App.vue son útiles para estilos compartidos y consistencia en toda la aplicación.
+Reutilización: Los estilos en componentes individuales son más fáciles de reutilizar en diferentes partes de la aplicación o en diferentes proyectos.
+
+-------------------------------------------------------------------
+ANALISIS DE ELEMENTOS DE STYLE
+PARA QUE SE APLIQUEN ESTOS CAMBIOS RECORDAR PONER DIV CLASS = ""
+.blank-window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+- display: flex;: Utiliza el modelo de diseño Flexbox para organizar los elementos hijos de .blank-window.
+- flex-direction: column;: Organiza los elementos hijos en una columna, uno debajo del otro.
+- align-items: center;: Centra horizontalmente los elementos hijos dentro del contenedor.
+- justify-content: center;: Centra verticalmente los elementos hijos dentro del contenedor.
+- height: 100vh;: Hace que el contenedor ocupe el 100% de la altura de la ventana del navegador.
+- background-color: #f0f0f0;: Establece un color de fondo gris claro para el contenedor.
+
+
+.blank-window h1 {
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+- color: #333;: Establece el color del texto del encabezado a un gris oscuro.
+- font-size: 2rem;: Ajusta el tamaño de la fuente del encabezado a 2 rem (unidades relativas al tamaño de la fuente raíz).
+- margin-bottom: 1rem;: Añade un margen inferior de 1 rem para separar el encabezado del enlace.
+.blank-window a
+
+.blank-window a {
+  color: #42b983;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+- color: #42b983;: Establece el color del enlace a un verde característico de Vue.js.
+- text-decoration: none;: Elimina el subrayado del enlace.
+- font-size: 1.2rem;: Ajusta el tamaño de la fuente del enlace a 1.2 rem.
+
+.blank-window a:hover {
+  text-decoration: underline;
+}
+
+text-decoration: underline;: Añade un subrayado al enlace cuando el usuario pasa el cursor sobre él.
+
+------------------------------------------------------------------------------------------------------
+Desglose de los Selectores CSS
+.blank-window:
+CSS
+.blank-window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+- .blank-window: Selecciona cualquier elemento con la clase blank-window. En este caso, selecciona el <div class="blank-window"> en el <template>.
+
+.blank-window h1:
+CSS
+.blank-window h1 {
+  color: #d51212;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.blank-window h1: Selecciona cualquier <h1> que sea un hijo (directo o indirecto) de un elemento con la clase blank-window. En este caso, selecciona el <h1> dentro del <div class="blank-window">.
+
+.blank-window a:
+CSS
+.blank-window a {
+  color: #42b983;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+- .blank-window a: Selecciona cualquier enlace (<a>) que sea un hijo de un elemento con la clase blank-window. En este caso, selecciona el enlace generado por <router-link> dentro del <div class="blank-window">.
+
+.blank-window a:hover:
+CSS
+.blank-window a:hover {
+  text-decoration: underline;
+}
+.blank-window a:hover: Selecciona cualquier enlace (<a>) que sea un hijo de un elemento con la clase blank-window cuando el cursor del ratón pasa sobre él. En este caso, aplica el subrayado al enlace cuando el cursor está sobre el enlace generado por <router-link>.
+
+
+Selectores: Los selectores determinan a qué elementos se aplican los estilos. En el ejemplo, .blank-window, .blank-window h1, .blank-window a y .blank-window a:hover son los selectores.
+
+Herencia: Los elementos HTML pueden heredar estilos de sus elementos padres. Sin embargo, en este caso, los estilos se aplican directamente a los elementos seleccionados.
+
+Especificidad: Los selectores más específicos (por ejemplo, .blank-window a:hover) tienen prioridad sobre los selectores menos específicos.
+
+Cada router-link en tu plantilla se convierte en un elemento <a> en el DOM, y los estilos definidos en tus reglas CSS afectan a estos elementos <a> según su ubicación dentro de blank-window o extra-section. 
+
+Atributo href: Es el principal indicador que utiliza el navegador para identificar un elemento <a> como un enlace.
+Variabilidad: El valor del atributo href puede apuntar a diferentes tipos de destinos, como URLs, anclas internas, correos electrónicos, scripts JavaScript, o archivos para descargar.
+
+-----------------------------------------------------------------------------------------------------
+Propiedades de Diseño y Posicionamiento
+
+1. display: Define cómo se debe mostrar un elemento.
+	Valores comunes: block, inline, inline-block, flex, grid, none.
+
+2. position: Define cómo se posiciona un elemento en el documento.
+	Valores comunes: static, relative, absolute, fixed, sticky.
+
+3. top, right, bottom, left: Define la posición de un elemento posicionado.
+
+4. float: Coloca un elemento a la izquierda o derecha.
+	Valores: left, right, none.
+
+5. clear: Controla el comportamiento de los elementos flotantes.
+	Valores: left, right, both, none.
+
+6. z-index: Controla el apilamiento de elementos posicionados.
+
+Propiedades de Tamaño y Espaciado
+
+1. width, height: Define el ancho y alto de un elemento.
+
+2. max-width, max-height, min-width, min-height: Define los tamaños máximos y mínimos de un elemento.
+
+3. margin: Define el margen exterior de un elemento.
+
+4. padding: Define el relleno interior de un elemento.
+
+Propiedades de Fondo y Bordes
+1. background: Define el fondo de un elemento.
+	Subpropiedades: background-color, background-image, background-position, background-size, background-repeat.
+
+2. border: Define el borde de un elemento.
+	Subpropiedades: border-width, border-style, border-color.
+
+3. border-radius: Define los bordes redondeados de un elemento.
+
+Propiedades de Texto
+1. color: Define el color del texto.
+
+2. font-family: Define la familia de fuentes del texto.
+
+3. font-size: Define el tamaño de la fuente del texto.
+
+4. font-weight: Define el grosor de la fuente.
+	Valores: normal, bold, bolder, lighter, 100 a 900.
+
+5. text-align: Define la alineación del texto.
+	Valores: left, right, center, justify.
+
+6. text-decoration: Define las decoraciones del texto.
+	Valores: none, underline, overline, line-through.
+
+7. line-height: Define la altura de la línea del texto.
+
+8. letter-spacing: Define el espacio entre caracteres del texto.
+
+9. text-transform: Controla la capitalización del texto.
+	Valores: none, capitalize, uppercase, lowercase.
+
+Propiedades de Flexbox y Grid
+1. flex-direction: Define la dirección de los elementos flexibles.
+	Valores: row, row-reverse, column, column-reverse.
+
+2. justify-content: Alinea los elementos flexibles a lo largo del eje principal.
+	Valores: flex-start, flex-end, center, space-between, space-around.
+
+3. align-items: Alinea los elementos flexibles a lo largo del eje transversal.
+	Valores: flex-start, flex-end, center, baseline, stretch.
+
+4. grid-template-columns: Define el número de columnas y su tamaño en un contenedor de cuadrícula.
+
+5. grid-template-rows: Define el número de filas y su tamaño en un contenedor de cuadrícula.
+
+6. grid-gap: Define el espacio entre las filas y columnas de la cuadrícula.
+
+Propiedades de Transformación y Transición
+
+1. transform: Aplica transformaciones 2D o 3D a un elemento.
+	Valores: rotate, scale, translate, skew.
+
+2. transition: Define las transiciones suaves entre dos estados de un elemento.
+	Subpropiedades: transition-property, transition-duration, transition-timing-function, 	transition-delay.
+
+Propiedades de Visibilidad
+1. visibility: Controla la visibilidad de un elemento.
+	Valores: visible, hidden.
+
+2. opacity: Define la opacidad de un elemento.
