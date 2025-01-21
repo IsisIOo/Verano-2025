@@ -19,6 +19,16 @@
       <h2>Sección Extra</h2>
       <p>Este es un párrafo dentro de la sección extra.</p>
       <router-link to="/">Volver a la Página Principal desde la Sección Extra</router-link>
+
+      <!--Este es para que los dos link estén separados por salto de linea,sin esto estaban uno al lado del otro--> 
+      <div class="spacer"></div>
+
+      <!--Así era el link para que tuviera las mismas propiedades que el link anterior--> 
+      <!-- <router-link to="/items-for-sale">Ver Objetos en Venta</router-link>-->
+
+      <!--Asi es para que tenga caracteristicas diferentes al link previo, se agrega class. Notar que está contenido
+      dentro de extras-section por identacion-->
+      <router-link to="/items-for-sale" class="special-link">Ver Objetos en Venta</router-link>
     </div>
   </div>
 </template>
@@ -92,5 +102,23 @@
 
 .extra-section a:hover {
   text-decoration: underline; /*Subraya los enlaces de la sección extra al pasar el mouse por encima*/
+}
+
+
+/*caracteristicas del segundo link */
+.special-link {
+  color: #007bff; /* Cambia el color del texto */
+  font-weight: bold; /* Hace el texto en negrita */
+  background-color: none; /* Fondo gris claro (al no ponerle el mouse encima) */
+  padding: 10px 20px; /* Añade padding alrededor del enlace */
+  border-radius: 5px; /* Bordes redondeados */
+  text-decoration: none; /* Elimina subrayado */
+  display: inline-block; /* Para aplicar padding y background correctamente */
+}
+
+
+.special-link:hover {
+  background-color: #000; /* Cambia el fondo al pasar el ratón */
+  text-decoration: underline; /* Añade subrayado al pasar el ratón */
 }
   </style>

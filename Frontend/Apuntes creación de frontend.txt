@@ -345,3 +345,129 @@ Propiedades de Visibilidad
 	Valores: visible, hidden.
 
 2. opacity: Define la opacidad de un elemento.
+
+-----------------------------------------------------------------------------------------------------
+VISTA DE VENTA DE PRODUCTOS
+- <div class="items-for-sale">: Este es el contenedor principal del componente. 
+La clase items-for-sale se utiliza para aplicar estilos específicos a este contenedor.
+
+- <h1>Objetos en Venta</h1>: Un encabezado que indica el título de la sección.
+
+- <ul>: Una lista desordenada (ul) que contendrá todos los productos en venta.
+
+- <li v-for="item in items" :key="item.id" class="item">: Un elemento de lista (li) para cada producto en venta. El atributo v-for es una directiva de Vue que itera sobre la lista de items y genera un li para cada item. El atributo :key proporciona una clave única para cada elemento de la lista, lo que ayuda a Vue a manejar eficientemente las actualizaciones del DOM.
+
+- <h2>{{ item.name }}</h2>: Un encabezado para el nombre del producto.
+
+- <p>{{ item.description }}</p>: Un párrafo que muestra la descripción del producto.
+
+- <p><strong>Precio:</strong> ${{ item.price }}</p>: Un párrafo que muestra el precio del producto.
+
+- <button @click="addToCart(item)">Agregar al Carrito</button>: Un botón que, al hacer clic, llama al método addToCart y pasa el item como argumento. La directiva @click se utiliza para escuchar el evento de clic en el botón.
+
+- name: 'ItemsForSale': El nombre del componente.
+
+- data(): Una función que devuelve un objeto con los datos del componente. En este caso, items es un arreglo de objetos, cada uno representando un producto en venta.
+
+- methods: Un objeto que contiene los métodos del componente. En este caso, addToCart es un método que se ejecuta cuando se hace clic en el botón "Agregar al Carrito". Este método actualmente solo imprime un mensaje en la consola, pero puedes añadir lógica adicional para manejar el carrito de compras.
+
+- En el componente ItemsForSale.vue, la palabra item se utiliza dentro de la directiva v-for de Vue.js. La directiva v-for es utilizada para renderizar una lista de elementos basada en un arreglo.
+
+-----------------------------------------------------------------------------------------------------
+Yo tenia puesto los productos como columna, una lista de rectangulos hacia abajo, pero le pedi que me hiciera que estuvieran uno al lado del otro como normalmente se encuentran
+
+asi lo tenia antes: 
+.items-for-sale {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.items-for-sale h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.items-for-sale ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.item {                     /* Esto es por cada item de items declarado en v-for */
+  border: 1px solid #ddd;       /* Define el borde del rectángulo */
+  padding: 10px;                /* Añade espacio interno dentro del rectángulo */
+  margin-bottom: 15px;          /* Añade espacio entre los rectángulos */
+  border-radius: 5px;           /* Redondea las esquinas del rectángulo */
+  background-color: #000;       /* Define el color de fondo del rectángulo */
+}
+
+.item h2 {
+  margin: 0 0 10px;
+  color: #42b983;
+}
+
+.item p {
+  margin: 5px 0;
+  color: #f0f0f0 /*colores de las letras dentro del cuadrado de cada item*/
+}
+
+.item button {
+  background-color: #42b983;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.item button:hover {
+  background-color: #358a6b;
+} 
+
+
+ESTA ES COMO CUADRICULA 
+<style scoped>
+.items-for-sale {
+  padding: 20px;
+  background-color: #f9f9f9;
+  display: grid;                       /* Define el contenedor como un grid */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Define columnas que se ajustan automáticamente */
+  gap: 20px;                           /* Espacio entre los items */
+}
+
+.items-for-sale h1 {
+  grid-column: 1 / -1;                 /* Asegura que el título ocupe toda la línea del grid */
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.item {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.item h2 {
+  margin: 0 0 10px;
+  color: #42b983;
+}
+
+.item p {
+  margin: 5px 0;
+}
+
+.item button {
+  background-color: #42b983;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.item button:hover {
+  background-color: #358a6b;
+}
+</style>
