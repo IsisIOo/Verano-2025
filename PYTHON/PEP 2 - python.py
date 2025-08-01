@@ -132,6 +132,7 @@ for mesa in todas_las_mesas:
         nombre = fila[0]
         votos = int(fila[1])
         #print(nombre, "→", votos)
+        # esto verifica si la cantidad de votos de una mesa esta cuadrada o no, no es global
         votos_totales= votos + votos_totales
         j += 1
     
@@ -156,34 +157,34 @@ for mesa in todas_las_mesas:
                 else:
                     votos_por_candidato[nombre] = votos
                 total_votos_validos += votos
-        print("\n==== RESULTADOS PARCIALES ====\n")
-        print(f"Total votos válidos (mesas cuadradas): {total_votos_validos}\n")
-
-        # Imprime porcentajes de candidatos
-        for candidato, votos in votos_por_candidato.items():
-            porcentaje = (votos / votos_totales) * 100
-            print(f"{candidato}: {votos} votos ({porcentaje:.2f}%)")
-
-        # Imprime porcentajes de nulos y blancos
-        for clave in ["NULOS", "BLANCOS"]:
-            votos = nulos_blancos[clave]
-            porcentaje = (votos / votos_totales) * 100
-            print(f"{clave}: {votos} votos ({porcentaje:.2f}%)")
-
-        
-
-
-
-
-
 
     else:
         mesas_descuadradas += 1
         lista_mesas_descuadradas.append(nombre_mesa)
         print(f"Votos totales: {votos_totales} (incorrecto, se esperaba {votos_emitidos})")    
     
+    
+total_votos_emitidos = total_votos_validos + nulos_blancos["NULOS"] + nulos_blancos["BLANCOS"]
 
-print(f"\nMesas cuadradas: {mesas_cuadradas}, Mesas descuadradas: {mesas_descuadradas}")
+print("\n==== RESULTADOS PARCIALES ====\n")
+print(f"Total votos válidos (mesas cuadradas): {total_votos_validos}\n")
+
+# Imprime porcentajes de candidatos
+for candidato, votos in votos_por_candidato.items():
+    porcentaje = (votos / total_votos_emitidos) * 100
+    print(f"{candidato}: {votos} votos ({porcentaje:.2f}%)")
+
+# Imprime porcentajes de nulos y blancos
+for clave in ["NULOS", "BLANCOS"]:
+    votos = nulos_blancos[clave]
+    porcentaje = (votos / total_votos_emitidos) * 100
+    print(f"{clave}: {votos} votos ({porcentaje:.2f}%)")
+
+#print(f"\nMesas cuadradas: {mesas_cuadradas}, Mesas descuadradas: {mesas_descuadradas}")
+print(f"Total de mesas procesadas: {cantidad_mesas}")
+print(f"Total de mesas cuadradas", len(lista_mesas_cuadradas))
+print(f"Total de mesas descuadradas", len(lista_mesas_descuadradas))
+print("\n==== DETALLES DE LAS MESAS ====\n")
 print(f"Total de mesas cuadradas: {lista_mesas_cuadradas}")
 print(f"Total de mesas descuadradas: {lista_mesas_descuadradas}\n")
 
