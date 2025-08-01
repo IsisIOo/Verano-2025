@@ -114,6 +114,7 @@ mesas_cuadradas = 0
 lista_mesas_cuadradas = []
 lista_mesas_descuadradas = []
 votos_por_candidato = {}  # clave: nombre candidato, valor: votos
+nulos_blancos = {"NULOS": 0, "BLANCOS": 0}  # Contador de votos nulos y blancos
 total_votos_validos = 0
 
 for mesa in todas_las_mesas:
@@ -121,7 +122,7 @@ for mesa in todas_las_mesas:
     comuna = encabezado[0]
     nombre_mesa = encabezado[1]
     votos_emitidos = int(encabezado[2])
-    print(f"Comuna: {comuna}, Mesa: {nombre_mesa}, Votos Emitidos: {votos_emitidos}")
+    print(f"\nComuna: {comuna}, Mesa: {nombre_mesa}, Votos Emitidos: {votos_emitidos}")
 
     j = 1
     votos_totales = 0
@@ -145,9 +146,11 @@ for mesa in todas_las_mesas:
             nombre = fila[0]
             #print(nombre)
             votos = int(fila[1])
-            #ignora los nulos y blancos
-            if nombre not in ["NULOS", "BLANCOS"]:
-                #si el candidato ya existe en el diccionario, suma los votos, si no, lo agrega
+            if nombre == "NULOS":
+                nulos_blancos["NULOS"] += votos
+            elif nombre == "BLANCOS":
+                nulos_blancos["BLANCOS"] += votos
+            else:
                 if nombre in votos_por_candidato:
                     votos_por_candidato[nombre] += votos
                 else:
@@ -156,9 +159,16 @@ for mesa in todas_las_mesas:
         print("\n==== RESULTADOS PARCIALES ====\n")
         print(f"Total votos válidos (mesas cuadradas): {total_votos_validos}\n")
 
+        # Imprime porcentajes de candidatos
         for candidato, votos in votos_por_candidato.items():
-            porcentaje = (votos / total_votos_validos) * 100
+            porcentaje = (votos / votos_totales) * 100
             print(f"{candidato}: {votos} votos ({porcentaje:.2f}%)")
+
+        # Imprime porcentajes de nulos y blancos
+        for clave in ["NULOS", "BLANCOS"]:
+            votos = nulos_blancos[clave]
+            porcentaje = (votos / votos_totales) * 100
+            print(f"{clave}: {votos} votos ({porcentaje:.2f}%)")
 
         
 
