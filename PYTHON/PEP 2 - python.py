@@ -20,8 +20,6 @@ primero pensé en solo hacer la carpeta 1 ya que, pensé que podrá reutilizar e
 haciendole cambios minimos, pero no me funcionó muy bien.
 """
 
-
-
 # FUNCIONES
 def abrir_archivo(archivo):        
     archivo= open(archivo, 'r', encoding='utf-8')
